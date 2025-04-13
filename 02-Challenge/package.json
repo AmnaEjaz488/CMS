@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^12.5.2"
+  }
+}

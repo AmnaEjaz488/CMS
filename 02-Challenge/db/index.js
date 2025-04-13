@@ -1,20 +1,22 @@
 import inquirer from 'inquirer';
 import pkg from 'pg';
 import consoleTable from 'console.table';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables from .env file
 
 const { Client } = pkg;
 
-// Database connection
+// Database connection using environment variables
 const db = new Client({
-  user: 'postgres', // Replace with your PostgreSQL username
+  user: process.env.USER_NAME, // Loaded from .env
   host: 'localhost',
-  database: 'cms_db', // Replace with your database name
-  password: 'password', // Replace with your PostgreSQL password
+  database: process.env.DATABASE_NAME, // Loaded from .env
+  password: process.env.PASSWORD, // Loaded from .env
   port: 5432,
 });
 
 db.connect();
-
 // Function to view all departments
 function viewAllDepartments() {
   db.query('SELECT id AS Department_ID, name AS Department_Name FROM department', (err, res) => {

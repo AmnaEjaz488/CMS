@@ -234,7 +234,6 @@ function mainMenu() {
           'View All Departments',
           'View All Roles',
           'View All Employees',
-          'Add a Department',
           'Add a Role',
           'Add an Employee',
           'Update an Employee Role',
@@ -253,9 +252,7 @@ function mainMenu() {
         case 'View All Employees':
           viewAllEmployees();
           break;
-        case 'Add a Department':
-          addDepartment();
-          break;
+
         case 'Add a Role':
           addRole();
           break;
@@ -274,3 +271,5 @@ function mainMenu() {
 
 // Start the application
 mainMenu();
+
+

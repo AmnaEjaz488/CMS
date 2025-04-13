@@ -1,36 +1,16 @@
--- Query to view all departments
-SELECT id AS Department_ID, name AS Department_Name FROM department;
-
--- Query to view all roles
 SELECT 
-    role.id AS Role_ID, 
-    role.title AS Job_Title, 
-    department.name AS Department, 
-    role.salary AS Salary
-FROM role
-JOIN department ON role.department_id = department.id;
-
--- Query to view all employees
-SELECT 
-    e.id AS Employee_ID, 
-    e.first_name AS First_Name, 
-    e.last_name AS Last_Name, 
-    role.title AS Job_Title, 
-    department.name AS Department, 
-    role.salary AS Salary, 
-    CONCAT(m.first_name, ' ', m.last_name) AS Manager
+    e.id AS id, 
+    e.first_name, 
+    e.last_name, 
+    role.title AS title, 
+    department.name AS department, 
+    role.salary, 
+    CASE 
+        WHEN m.first_name IS NULL THEN 'NULL'
+        ELSE CONCAT(m.first_name, ' ', m.last_name)
+    END AS manager
 FROM employee e
 LEFT JOIN role ON e.role_id = role.id
 LEFT JOIN department ON role.department_id = department.id
-LEFT JOIN employee m ON e.manager_id = m.id;
-
-
-
-
-SELECT * FROM department;
-SELECT * FROM role;
-SELECT * FROM employee;
-
-
-
-
+LEFT JOIN employee m ON e.manager_id = m.id
+ORDER BY e.id;

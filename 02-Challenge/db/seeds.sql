@@ -23,3 +23,7 @@ VALUES
     ('Alice', 'Johnson', 5, 4), -- Accountant, reports to Account Manager
     ('Bob', 'Brown', 4, 2), -- Account Manager, reports to Jane
     ('Emily', 'Clark', 3, NULL); -- Legal Advisor, no manager
+
+    TRUNCATE employee RESTART IDENTITY CASCADE;
+TRUNCATE role RESTART IDENTITY CASCADE;
+TRUNCATE department RESTART IDENTITY CASCADE;
